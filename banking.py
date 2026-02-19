@@ -120,6 +120,9 @@ BB003 = StudentBankAccount(name="joe", secret="123", balance=100)
 # User4
 BB004 = PremiumSaving(name="Thomas", secret="asd", balance=1000)
 print(BB004.deposite(100, "asd"))
+# User5
+BB005 = BusinessAccount(name="Lean", secret="asd", balance=200)
+print(BB005.check_balance("asd"))
 # accounts = {
 #     "BB001": BB001,
 #     "BB002": BB002
