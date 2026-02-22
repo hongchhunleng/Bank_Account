@@ -65,12 +65,13 @@ class Bank_Account:
         print("=" * 50)
         return f"Your balance have {self._balance}$."
 
+
 # StudentBankAccount that inheritance from Bank_Account
 class StudentBankAccount(Bank_Account):
     def withdraw(self, amount, secret):
         if secret != self._secret:
             return "Wrong Passcode!"
-        
+
         if amount > 500:
             print("You can't withdraw over 500$.")
         elif amount < 0:
@@ -83,7 +84,8 @@ class StudentBankAccount(Bank_Account):
             print("=" * 50)
             print(f"{self.name} You have withdraw {amount}$.")
             return f"{self.name} you have {self._balance}$ left."
-        
+
+
 # PremiumSaving that inherite from Bank_Account
 class PremiumSaving(Bank_Account):
     def deposite(self, amount, secret):
@@ -98,7 +100,8 @@ class PremiumSaving(Bank_Account):
             print("=" * 50)
             print(f"Deposite {amount}$ seccessfully.")
             return f"Okay {self.name} you are not broke anymore now your balance is {self._balance}$."
-        
+
+
 # BussinessAccount that inherite from Bank_Acoount and add method Take_loan()
 class BusinessAccount(Bank_Account):
     def take_loan(self, amount, secret):
@@ -117,73 +120,74 @@ BB001 = Bank_Account(name="leng", secret="123", balance=3000)
 BB002 = Bank_Account(name="Neang", secret="143", balance=1000)
 # User3
 BB003 = StudentBankAccount(name="joe", secret="123", balance=100)
-print(BB003.withdraw(20, "123" ))
 # User4
 BB004 = PremiumSaving(name="Thomas", secret="asd", balance=1000)
-print(BB004.deposite(100, "asd"))
 # User5
 BB005 = BusinessAccount(name="Lean", secret="asd", balance=200)
-print(BB005.take_loan(1000, "asd"))
-# accounts = {
-#     "BB001": BB001,
-#     "BB002": BB002
-# }
-# current_account_id = input("Enter your account ID: ").strip()
 
-# if current_account_id not in accounts:
-#     print("Invalid account ID!")
-#     exit()
+accounts = {
+    "BB001": BB001,
+    "BB002": BB002,
+    "BB003": BB003,
+    "BB004": BB004,
+    "BB005": BB005,
+}
+current_account_id = input("Enter your account ID: ").strip()
 
-# current_account = accounts[current_account_id]
-# print(f"Welcome {current_account.name}!")
+if current_account_id not in accounts:
+    print("Invalid account ID!")
+    exit()
 
-# while True:
-#     print("="*50)
-#     print("1. Deposit")
-#     print("2. Withdraw")
-#     print("3. Transfer")
-#     print("4. Payment")
-#     print("5. Check Balance")
-#     print("6. Exit")
-#     print("="*50)
-    
-#     choice = input("\nEnter your choice: ").strip()
-#     if choice == "1":
-#         amount = int(input("Enter the amount : "))
-#         secret = input("Enter your passcode : ")
-#         print(current_account.deposite(amount, secret))
-#     elif choice == "2":
-#         amount = int(input("Enter the amount : "))
-#         secret = input("Enter your passcode : ")
-#         print(current_account.withdraw(amount, secret))
-#     elif choice == "3":
-#         to_account_id = input("Please input other ID account: ")
-        
-#         if to_account_id not in accounts:
-#             print("Invalid account!!")
-#         elif to_account_id == current_account_id:
-#             print("You cannot transfer to your own account!")
-#         else:
-#             amount = int(input("Enter the amount: "))
-#             secret = input("Enter your passcode: ")
-#             data_take = accounts[to_account_id]
-#             print(current_account.transfer(data_take, amount, secret))
-#     elif choice == "4":
-#         service = input("Enter service type: ")
-#         amount = int(input("Enter the amount: "))
-#         secret = input("Enter your passcode: ")
-#         print(current_account.payment(service, amount, secret))
-        
-#     elif choice == "5":
-#         secret = input("Enter your passcode: ")
-#         print(current_account.check_balance(secret))
-        
-#     elif choice == "6":
-#         print("Thanks for using our bank system!")
-#         break
-#     else:
-#         print("Invalid choice!!")
-        
+current_account = accounts[current_account_id]
+print(f"Welcome {current_account.name}!")
+
+while True:
+    print("=" * 50)
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Transfer")
+    print("4. Payment")
+    print("5. Check Balance")
+    print("6. Exit")
+    print("=" * 50)
+
+    choice = input("\nEnter your choice: ").strip()
+    if choice == "1":
+        amount = int(input("Enter the amount : "))
+        secret = input("Enter your passcode : ")
+        print(current_account.deposite(amount, secret))
+    elif choice == "2":
+        amount = int(input("Enter the amount : "))
+        secret = input("Enter your passcode : ")
+        print(current_account.withdraw(amount, secret))
+    elif choice == "3":
+        to_account_id = input("Please input other ID account: ")
+
+        if to_account_id not in accounts:
+            print("Invalid account!!")
+        elif to_account_id == current_account_id:
+            print("You cannot transfer to your own account!")
+        else:
+            amount = int(input("Enter the amount: "))
+            secret = input("Enter your passcode: ")
+            data_take = accounts[to_account_id]
+            print(current_account.transfer(data_take, amount, secret))
+    elif choice == "4":
+        service = input("Enter service type: ")
+        amount = int(input("Enter the amount: "))
+        secret = input("Enter your passcode: ")
+        print(current_account.payment(service, amount, secret))
+
+    elif choice == "5":
+        secret = input("Enter your passcode: ")
+        print(current_account.check_balance(secret))
+
+    elif choice == "6":
+        print("Thanks for using our bank system!")
+        break
+    else:
+        print("Invalid choice!!")
+
 
 # # User1_Access
 # print("=" * 50)
